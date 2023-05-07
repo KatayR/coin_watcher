@@ -60,8 +60,16 @@ class _DisplayState extends State<Display> {
                           padding: const EdgeInsets.all(10),
                           itemCount: Currencies.cryptoList.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return PriceBlock(Currencies.cryptoList, prices,
-                                index, selectedCurrency);
+                            return Container(
+                              color: shadedCryptoYellow,
+                              margin: EdgeInsets.all(10),
+                              width: 270,
+                              height: 50,
+                              child: Center(
+                                child: Text(
+                                    "1 ${Currencies.cryptoList[index]} = ${prices[index].toStringAsFixed(2)} $selectedCurrency"),
+                              ),
+                            );
                           }),
                     ),
                     Container(
@@ -92,41 +100,6 @@ class _DisplayState extends State<Display> {
                 size: 100,
               );
             }),
-      ),
-    );
-  }
-}
-
-class PriceBlock extends StatefulWidget {
-  List cryptoList;
-  List prices;
-  int index;
-  String selectedCurrency;
-
-  PriceBlock(this.cryptoList, this.prices, this.index, this.selectedCurrency);
-
-  @override
-  State<PriceBlock> createState() => _PriceBlockState(
-      this.cryptoList, this.prices, this.index, this.selectedCurrency);
-}
-
-class _PriceBlockState extends State<PriceBlock> {
-  List cryptoList;
-  List prices;
-  int index;
-  String selectedCurrency;
-  _PriceBlockState(
-      this.cryptoList, this.prices, this.index, this.selectedCurrency);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: shadedCryptoYellow,
-      margin: EdgeInsets.all(10),
-      width: 270,
-      height: 50,
-      child: Center(
-        child: Text(
-            "1 ${cryptoList[index]} = ${prices[index].toStringAsFixed(2)} $selectedCurrency"),
       ),
     );
   }
