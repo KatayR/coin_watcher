@@ -78,9 +78,10 @@ class _DisplayState extends State<Display> {
                         height: 100,
                         child: Center(
                           child: DropdownButton(
+                              iconSize: 35,
                               enableFeedback: true,
                               hint: Text(selectedCurrency),
-                              iconEnabledColor: cryptoYellow,
+                              iconEnabledColor: Colors.black,
                               items: currencies.getList(),
                               onChanged: (value) async {
                                 selectedCurrency = value;
